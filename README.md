@@ -25,7 +25,7 @@ Adicional:
 
 O projeto foi desenvolvido usando Laravel 10, por isso, existem alguns requisitos para conseguir rodá-lo. Você precisa ter instalado:
 
-- Apache ou Nginx
+- Apache ou Nginx (Opcional)
 - PHP >= 8.1
 - Composer
 - NPM
@@ -38,11 +38,13 @@ Com tudo instalado e configurado, siga os passos abaixo:
     - Observação: Por padrão, o ambiente configurado é o de desenvolvimento!
 - Abra o CLI de sua preferência e acesse a pasta do projeto
 - Digite o comando: composer install
+- Digite o comando: php artisan key:generate
 - Configure as variável de ambiente dentro do arquivo .env, indicando o banco de dados em que o projeto se conectará
 - Digite o comando: npm install && npm run dev (para hot reload) ou, npm install && npm run build (para static load)
     - Observação: O npm install só precisa ser executado na primeira instalação do projeto.
 - Digite o comando: php artisan migrate --seed
 - Acesse o endereço indicado anteriormente no CLI, provavelmente será [localhost](http://localhost)
+- Caso não esteja usando um servidor web, use o comando: "php artisan serve" para iniciar o servidor do próprio PHP. O endereço de acesso será exibido ao final do carregamento.
 
 Para logar no app, use as credenciais abaixo (certifique-se de ter executado os comandos da lista acima!):
 
