@@ -33,7 +33,7 @@ O projeto foi desenvolvido usando Laravel 10, por isso, existem alguns requisito
 
 Com tudo instalado e configurado, siga os passos abaixo:
 
-- Clone o projeto para o local configurado para rodar seus projetos web
+- Clone o projeto para o local configurado para rodar seus aplicativos web
 - Faça uma cópia do arquivo .env.example e renomeie-o para .env
     - Observação: Por padrão, o ambiente configurado é o de desenvolvimento!
 - Abra o CLI de sua preferência e acesse a pasta do projeto
@@ -41,8 +41,6 @@ Com tudo instalado e configurado, siga os passos abaixo:
 - Configure as variável de ambiente dentro do arquivo .env, indicando o banco de dados em que o projeto se conectará
 - Digite o comando: npm install && npm run dev (para hot reload) ou, npm install && npm run build (para static load)
     - Observação: O npm install só precisa ser executado na primeira instalação do projeto.
-    - Observação 2: npm run dev deverá ser sempre executado, caso escolha usar hot reload sempre que mexer no projeto.
-    - Observação 3: npm run build geram arquivos estáticos de css e javascript nesse projeto. Caso não queira usar hot reload, use o build, mas, sempre que usar o hot reload, antes de publicar, precisará rodar o npm run build.
 - Digite o comando: php artisan migrate --seed
 - Acesse o endereço indicado anteriormente no CLI, provavelmente será [localhost](http://localhost)
 
