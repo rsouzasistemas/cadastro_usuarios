@@ -1,12 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## Cadastro de Usuários
 
 Projeto de teste prático para vaga de programador Laravel.
@@ -28,7 +21,7 @@ Adicional:
 - Você pode criar uma estrutura para poder cadastrar mais de um telefone para o usuário.
 
 
-## Instalação do Projeto (sem Docker)
+## Instalação do Projeto
 
 O projeto foi desenvolvido usando Laravel 10, por isso, existem alguns requisitos para conseguir rodá-lo. Você precisa ter instalado:
 
@@ -42,10 +35,14 @@ Com tudo instalado e configurado, siga os passos abaixo:
 
 - Clone o projeto para o local configurado para rodar seus projetos web
 - Faça uma cópia do arquivo .env.example e renomeie-o para .env
+    - Observação: Por padrão, o ambiente configurado é o de desenvolvimento!
 - Abra o CLI de sua preferência e acesse a pasta do projeto
 - Digite o comando: composer install
 - Configure as variável de ambiente dentro do arquivo .env, indicando o banco de dados em que o projeto se conectará
-- Digite o comando: npm install && npm run dev
+- Digite o comando: npm install && npm run dev (para hot reload) ou, npm install && npm run build (para static load)
+    - Observação: O npm install só precisa ser executado na primeira instalação do projeto.
+    - Observação 2: npm run dev deverá ser sempre executado, caso escolha usar hot reload sempre que mexer no projeto.
+    - Observação 3: npm run build geram arquivos estáticos de css e javascript nesse projeto. Caso não queira usar hot reload, use o build, mas, sempre que usar o hot reload, antes de publicar, precisará rodar o npm run build.
 - Digite o comando: php artisan migrate --seed
 - Acesse o endereço indicado anteriormente no CLI, provavelmente será [localhost](http://localhost)
 
