@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,13 +30,12 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        if (!User::create($request->all())) {
-            return redirect()->route('users.create')->with('alert-danger', 'O registro não foi efetuado!');
-        }
+        $data = $request->validated();
+        $createReturn = (new User)->createUser($data);
 
-        return redirect()->route('users.index')->with('alert-success', 'Registro efetuado com sucesso!');
+        return redirect()->route($createReturn['routeReturn'])->with($createReturn['alert'], $createReturn['msg']);
     }
 
     /**
@@ -52,20 +53,29 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
         if (!$user = User::where('id', $id)->with('userPhones')->first()) {
             return redirect()->route('users.index')->with('alert-danger', 'Registro não localizado!');
         }
 
-        $data = $request->all();
-        $data['password'] = $user->password;
+        $data = $request->validated();
 
-        if (!$user->update($data)) {
-            return redirect()->route('users.edit', $id)->with('alert-danger', 'Não foi possível atualizar o registro!');
+        if ($data['password']) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            $data['password'] = $user->password;
         }
 
-        return redirect()->route('users.index')->with('alert-success', 'Registro atualizado com sucesso!');
+        $updateReturn = (new User)->updateUser($data, $user);
+
+        $returnId = null;
+        if ($updateReturn['alert'] == 'alert-danger') {
+            $returnId = $id;
+        }
+
+        return redirect()->route($updateReturn['routeReturn'], $returnId)
+            ->with($updateReturn['alert'], $updateReturn['msg']);
     }
 
     /**

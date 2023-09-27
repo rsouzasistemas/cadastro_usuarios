@@ -11,6 +11,7 @@ class UserPhone extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'phone_number',
     ];
 
