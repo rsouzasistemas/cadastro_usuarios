@@ -78,11 +78,11 @@
                                             <div class="col-md-5">
                                                 <input id="phone"
                                                        type="text"
-                                                       class="form-control @error("phones.{{ $keyPhone }}.phone") is-invalid @enderror"
+                                                       class="form-control @error('phones.' . $keyPhone . '.phone') is-invalid @enderror"
                                                        name="phones[{{ $keyPhone }}][phone]"
                                                        value="{{ $phone->phone_number ?? null }}" required>
 
-                                                @error("phones.{{ $keyPhone }}.phone")
+                                                @error('phones.' . $keyPhone . '.phone')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
