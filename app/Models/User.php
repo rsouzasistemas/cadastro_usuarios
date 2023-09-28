@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
+use mysql_xdevapi\Collection;
 
 class User extends Authenticatable
 {
@@ -48,6 +49,18 @@ class User extends Authenticatable
     public function userPhones() : HasMany
     {
         return $this->hasMany(UserPhone::class, 'user_id', 'id');
+    }
+
+    public function listUsers()
+    {
+        $fields = [
+            'id',
+            'name',
+            'email'
+        ];
+
+        $listUsers = User::select($fields)->paginate();
+        return $listUsers;
     }
 
     public function createUser ($data) : array

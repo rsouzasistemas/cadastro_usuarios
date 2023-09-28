@@ -15,8 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('userPhones')->paginate();
-
+        $users = (new User)->listUsers();
         return view('users.index', compact('users'));
     }
 
