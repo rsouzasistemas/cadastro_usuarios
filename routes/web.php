@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'edit'])->name('edit');
         Route::put('/usuarios/update/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('update');
         Route::delete('/usuarios/apagar/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('destroy');
+        Route::get('/usuarios/show_phones/{id}', [\App\Http\Controllers\UserController::class, 'show_phones'])->name('show_phones');
     });
 });
 

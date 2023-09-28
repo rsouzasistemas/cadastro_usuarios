@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use App\Models\UserPhone;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,6 +18,16 @@ class UserController extends Controller
         $users = User::with('userPhones')->paginate();
 
         return view('users.index', compact('users'));
+    }
+
+    public function show_phones($id)
+    {
+        $userPhones = UserPhone::where('user_id', $id)->select('phone_number')->get()->toArray();
+
+//        if (!$userPhones = UserPhone::where('user_id', $id)->get()) {}
+
+
+        return response()->json($userPhones);
     }
 
     /**
