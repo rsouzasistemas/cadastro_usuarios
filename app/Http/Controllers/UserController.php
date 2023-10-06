@@ -22,10 +22,6 @@ class UserController extends Controller
     public function show_phones($id)
     {
         $userPhones = UserPhone::where('user_id', $id)->select('phone_number')->get()->toArray();
-
-//        if (!$userPhones = UserPhone::where('user_id', $id)->get()) {}
-
-
         return response()->json($userPhones);
     }
 
